@@ -1,0 +1,45 @@
+img.logo {
+  margin-left: 5%;
+  margin-right: 2.5%;
+}
+
+mat-form-field.search-bar {
+  font-size: 75%;
+  width: 100%;
+  margin-right: 5%;
+}
+
+mat-form-field.select-place {
+  font-size: 75%;
+  width: 50%;
+}
+
+::ng-deep .mat-form-field-wrapper {
+  margin: 0;
+  padding: 0;
+}
+
+::ng-deep .mat-select-placeholder {
+  color:black;
+}
+
+::ng-deep .mat-form-field-infix {
+  border-top: 0;
+}
+
+::ng-deep .mat-icon {
+  margin-top: 8px;
+}
+
+/* ::ng-deep .mat-form-field-flex {
+  margin: 0 !important;
+} */
+
+::ng-deep .mat-select-arrow-wrapper {
+    display: block !important;
+}
+
+span {
+  margin-left: 5%;
+  font-size: 17px;
+}
