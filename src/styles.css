@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://cdn.lazywasabi.net/fonts/IBMPlexSansThai/IBMPlexSansThai.css');
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+* {
+  font-family: 'IBM Plex Sans Thai', sans-serif;
+}
