@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { take } from 'rxjs/operators';
 import { Config } from '../../shared/config.models';
+import { Category } from 'src/app/shared/category.model';
 
 @Component({
   selector: 'app-home',
@@ -26,6 +27,14 @@ export class HomeComponent implements OnInit {
       ).subscribe((data: Config) => {
         this.config = data;
       }, (err) => console.log(err));
+  }
+
+  getSubCategories() {
+    if (this.categoryName === 'ทั้งหมด') {
+      return ['test'];
+    } else {
+      return this.config.categories.find(i => i.name === this.categoryName).subcategories;
+    }
   }
 
 }
