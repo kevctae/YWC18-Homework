@@ -30,10 +30,6 @@ mat-form-field.select-place {
   margin-top: 8px;
 }
 
-/* ::ng-deep .mat-form-field-flex {
-  margin: 0 !important;
-} */
-
 ::ng-deep .mat-select-arrow-wrapper {
     display: block !important;
 }
