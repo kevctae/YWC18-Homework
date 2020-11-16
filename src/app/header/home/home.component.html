@@ -6,6 +6,23 @@
       <mat-card-title>
         <h3><b>ประเภทร้านค้า</b></h3>
       </mat-card-title>
+
+      <mat-card-content *ngIf="config">
+        <mat-radio-group class="radio-group">
+          <mat-radio-button 
+          class="radio-button" value="ทั้งหมด">ทั้งหมด</mat-radio-button>
+          <mat-radio-button 
+            class="radio-button" 
+            value="1"
+            *ngFor="let category of config.categories">
+            {{category.name}}
+          </mat-radio-button>
+        </mat-radio-group>
+      </mat-card-content>
+
+      <mat-card-title>
+        <h3><b>จังหวัด/ใกล้ฉัน</b></h3>
+      </mat-card-title>
     </mat-card>
   </mat-grid-tile>
 
