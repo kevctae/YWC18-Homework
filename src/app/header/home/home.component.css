@@ -18,3 +18,11 @@ mat-card {
 .radio-button {
   margin: 5px;
 }
+
+.sidebar-form-field {
+  width: 100%;
+}
+
+#place::ng-deep .mat-select-placeholder {
+  color:black;
+}

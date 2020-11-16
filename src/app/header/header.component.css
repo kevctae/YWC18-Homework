@@ -19,7 +19,7 @@ mat-form-field.select-place {
   padding: 0;
 }
 
-::ng-deep .mat-select-placeholder {
+#place::ng-deep .mat-select-placeholder {
   color:black;
 }
 
