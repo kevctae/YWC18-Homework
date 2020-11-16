@@ -1,0 +1,139 @@
+<div class="container-fluid">
+  <div class="row">
+    <h2><b>ผลการค้นหา ร้านอาหารและเครื่องดื่ม</b></h2>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      <mat-card *ngIf="config">
+        <div class="row">
+          <div class="col" style="margin: 16px;">
+            <mat-card-title>
+              <h3><b>ประเภทร้านค้า</b></h3>
+            </mat-card-title>
+
+            <mat-card-content>
+              <mat-radio-group class="radio-group" [(ngModel)]="filteredCategory">
+                <mat-radio-button 
+                  class="radio-button" 
+                  [value]="'ทั้งหมด'"
+                  (click)="resetFilter()">
+                  ทั้งหมด
+                </mat-radio-button>
+
+                <mat-radio-button 
+                  class="radio-button" 
+                  *ngFor="let category of config.categories"
+                  [value]="category.name">
+                  {{category.name}}
+                </mat-radio-button>
+              </mat-radio-group>
+            </mat-card-content>
+      
+            <mat-card-title>
+              <h3><b>จังหวัด/ใกล้ฉัน</b></h3>
+            </mat-card-title>
+      
+            <mat-card-content>
+              <mat-form-field
+                id="place"  
+                appearance="outline" 
+                floatLabel="always"
+                class="sidebar-form-field">
+                <mat-icon matPrefix>location_on</mat-icon>
+                <mat-select placeholder="พื้นที่ใกล้ฉัน" [(ngModel)]="filteredProvince">
+                  <mat-option *ngFor="let province of config.provinces" [value]="province">
+                    {{province}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-card-content>
+      
+            <mat-card-title>
+              <h3><b>ราคา</b></h3>
+            </mat-card-title>
+      
+            <mat-card-content>
+              <mat-form-field 
+                appearance="outline" 
+                floatLabel="always"
+                class="sidebar-form-field">
+                <mat-select placeholder="กรุณาเลือก" [(ngModel)]="filteredPrice">
+                  <mat-option *ngFor="let priceRange of config.priceRange" [value]="config.priceRange.indexOf(priceRange)">
+                    {{priceRange}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-card-content>
+      
+            <mat-card-title>
+              <h3><b>ประเภทร้านอาหารและเครื่องดื่ม</b></h3>
+            </mat-card-title>
+
+            <mat-card-content>
+              <mat-radio-group class="radio-group" [(ngModel)]="filteredSubcategory">
+                <mat-radio-button class="radio-button" [value]="'ทั้งหมด'">
+                  ทั้งหมด
+                </mat-radio-button>
+
+                <mat-radio-button
+                  class="radio-button" 
+                  *ngFor="let subcategory of getSubcategories()"
+                  [value]="subcategory">
+                  {{subcategory}}
+                </mat-radio-button>
+              </mat-radio-group>
+            </mat-card-content>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+    <div class="col-9" *ngIf="config">
+      <mat-card
+        *ngFor="let merchant of getMerchant()" 
+        style="margin-bottom: 15px;"
+        id="contents">
+        <div class="row">
+          <div class="col-4">
+            <img 
+              [src]="merchant.coverImageId" 
+              class="img-fluid">
+          </div>
+
+          <div class="col-8">
+            <h1 style="margin-top: 8px;">
+              <b>{{merchant.shopNameTH}}&nbsp;&nbsp;&nbsp;&nbsp;</b>
+              <ng-container *ngIf="merchant.isOpen == 'Y'">
+                <button type="button" class="btn btn-success btn-sm" >เปิดอยู่</button>
+              </ng-container>
+              <ng-container *ngIf="merchant.isOpen == 'N'">
+                <button type="button" class="btn btn-secondary btn-sm" >ปิดอยู่</button>
+              </ng-container>
+            </h1>
+            
+            <h3 style="color: gray;">{{merchant.categoryName}} | 
+              <a style="color: black;">{{merchant.priceLevel | priceLevel:false}}</a>{{merchant.priceLevel | priceLevel:true}} | 
+              {{merchant.addressDistrictName}}
+              {{merchant.addressProvinceName}}
+            </h3>
+
+            <hr />
+            <p style="color: gray;" [innerHTML]="merchant.highlightText"></p>
+            <p style="color: gray;"><a style="color: black;"><b>สินค้าแนะนำ</b></a> {{merchant.recommendedItems | arraySpacer}}</p>
+            
+            <ng-container *ngIf="merchant.facilities.includes('ที่จอดรถ')">
+              <mat-icon style="margin-right: 30px;" class="icon">commute</mat-icon>
+            </ng-container>
+            <ng-container *ngIf="merchant.facilities.includes('สามารถนำสัตว์เลี้ยงเข้าได้')">
+              <mat-icon style="margin-right: 30px;" class="icon">pets</mat-icon>
+            </ng-container>
+            <ng-container *ngIf="merchant.facilities.includes('รับจองล่วงหน้า')">
+              <mat-icon style="margin-right: 30px;" class="icon">supervisor_account</mat-icon>
+            </ng-container>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

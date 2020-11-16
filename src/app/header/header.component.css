@@ -1,17 +1,16 @@
-img.logo {
-  margin-left: 5%;
-  margin-right: 2.5%;
+.logo {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 mat-form-field.search-bar {
   font-size: 75%;
-  width: 100%;
-  margin-right: 5%;
+  width: 70%;
 }
 
 mat-form-field.select-place {
   font-size: 75%;
-  width: 50%;
+  width: 30%;
 }
 
 ::ng-deep .mat-form-field-wrapper {
@@ -19,7 +18,7 @@ mat-form-field.select-place {
   padding: 0;
 }
 
-::ng-deep .mat-select-placeholder {
+#place::ng-deep .mat-select-placeholder {
   color:black;
 }
 
@@ -31,10 +30,6 @@ mat-form-field.select-place {
   margin-top: 8px;
 }
 
-/* ::ng-deep .mat-form-field-flex {
-  margin: 0 !important;
-} */
-
 ::ng-deep .mat-select-arrow-wrapper {
     display: block !important;
 }
@@ -43,3 +38,4 @@ span {
   margin-left: 5%;
   font-size: 17px;
 }
+

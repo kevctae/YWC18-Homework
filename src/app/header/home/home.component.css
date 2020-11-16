@@ -1,0 +1,47 @@
+h2 {
+  margin: 1.6667%;
+}
+
+h3 {
+  font-family: 'IBM Plex Sans Thai', sans-serif;
+}
+
+g {
+  color: gray;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.radio-button {
+  margin: 5px;
+}
+
+.sidebar-form-field {
+  width: 100%;
+}
+
+#place::ng-deep .mat-select-placeholder {
+  color:black;
+}
+
+::ng-deep .mat-card {
+  padding: 0 !important;
+}
+
+img {
+  padding: 8px;
+  border-radius: 5%;
+  object-fit: cover;
+  object-position: center center;
+  width: 300px;
+  height: 300px;
+}
+
+.icon {
+  color: limegreen;
+  font-size: 250%;
+}
