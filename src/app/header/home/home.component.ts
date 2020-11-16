@@ -12,7 +12,7 @@ import { Category } from 'src/app/shared/category.model';
 export class HomeComponent implements OnInit {
   configURL = 'https://panjs.com/ywc18.json';
   config: Config;
-  categoryName: string;
+  categoryName: string = 'ทั้งหมด';
 
   constructor(private http: HttpClient) { }
 
@@ -31,7 +31,11 @@ export class HomeComponent implements OnInit {
 
   getSubCategories() {
     if (this.categoryName === 'ทั้งหมด') {
-      return ['test'];
+      var allCat: string[] = [];
+      this.config.categories.map((cat: Category) => {
+        allCat = allCat.concat(cat.subcategories);
+      });
+      return allCat;
     } else {
       return this.config.categories.find(i => i.name === this.categoryName).subcategories;
     }
