@@ -13,12 +13,16 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule } from '@angular/forms';
+import { PriceLevelPipe } from '../shared/pipes/price-level.pipe';
+import { ArraySpacerPipe } from '../shared/pipes/array-spacer.pipe';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
     HomeComponent,
+    PriceLevelPipe,
+    ArraySpacerPipe,
   ],
   imports: [
     CommonModule,
