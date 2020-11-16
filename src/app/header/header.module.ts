@@ -12,7 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,6 +30,7 @@ import { MatRadioModule } from '@angular/material/radio';
     MatGridListModule,
     MatCardModule,
     MatRadioModule,
+    FormsModule,
   ]
 })
 export class HeaderModule { }

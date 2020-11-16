@@ -11,6 +11,7 @@ import { Config } from '../../shared/config.models';
 export class HomeComponent implements OnInit {
   configURL = 'https://panjs.com/ywc18.json';
   config: Config;
+  categoryName: string;
 
   constructor(private http: HttpClient) { }
 
