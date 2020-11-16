@@ -13,7 +13,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule } from '@angular/forms';
-import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +32,6 @@ import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
     MatCardModule,
     MatRadioModule,
     FormsModule,
-    NgbAlertModule,
   ]
 })
 export class HeaderModule { }

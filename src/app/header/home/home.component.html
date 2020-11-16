@@ -4,74 +4,104 @@
   </div>
 
   <div class="row">
-    <div class="col-4">
+    <div class="col-3">
       <mat-card *ngIf="config">
-        <mat-card-title>
-          <h3><b>ประเภทร้านค้า</b></h3>
-        </mat-card-title>
-  
-        <mat-card-content>
-          <mat-radio-group class="radio-group" [(ngModel)]="categoryName">
-            <mat-radio-button class="radio-button" value="ทั้งหมด">ทั้งหมด</mat-radio-button>
-            <mat-radio-button 
-              class="radio-button" 
-              *ngFor="let category of config.categories"
-              [value]="category.name">
-              {{category.name}}
-            </mat-radio-button>
-          </mat-radio-group>
-        </mat-card-content>
-  
-        <mat-card-title>
-          <h3><b>จังหวัด/ใกล้ฉัน</b></h3>
-        </mat-card-title>
-  
-        <mat-card-content>
-          <mat-form-field
-            id="place"  
-            appearance="outline" 
-            floatLabel="always"
-            class="sidebar-form-field">
-            <mat-icon matPrefix>location_on</mat-icon>
-            <mat-select placeholder="พื้นที่ใกล้ฉัน">
-              <mat-option *ngFor="let province of config.provinces" [value]="province">
-                {{province}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </mat-card-content>
-  
-        <mat-card-title>
-          <h3><b>ราคา</b></h3>
-        </mat-card-title>
-  
-        <mat-card-content>
-          <mat-form-field 
-            appearance="outline" 
-            floatLabel="always"
-            class="sidebar-form-field">
-            <mat-select placeholder="กรุณาเลือก">
-              <mat-option *ngFor="let priceRange of config.priceRange" [value]="priceRange">
-                {{priceRange}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </mat-card-content>
-  
-        <mat-card-title>
-          <h3><b>ประเภทร้านอาหารและเครื่องดื่ม</b></h3>
-        </mat-card-title>
-  
-        <mat-card-content>
-          <mat-radio-group class="radio-group">
-            <mat-radio-button
-              class="radio-button" 
-              *ngFor="let subcategory of getSubCategories()"
-              [value]="subcategory">
-              {{subcategory}}
-            </mat-radio-button>
-          </mat-radio-group>
-        </mat-card-content>
+        <div class="row">
+          <div class="col" style="margin: 16px;">
+            <mat-card-title>
+              <h3><b>ประเภทร้านค้า</b></h3>
+            </mat-card-title>
+
+            <mat-card-content>
+              <mat-radio-group class="radio-group" [(ngModel)]="categoryName">
+                <mat-radio-button class="radio-button" value="ทั้งหมด">ทั้งหมด</mat-radio-button>
+                <mat-radio-button 
+                  class="radio-button" 
+                  *ngFor="let category of config.categories"
+                  [value]="category.name">
+                  {{category.name}}
+                </mat-radio-button>
+              </mat-radio-group>
+            </mat-card-content>
+      
+            <mat-card-title>
+              <h3><b>จังหวัด/ใกล้ฉัน</b></h3>
+            </mat-card-title>
+      
+            <mat-card-content>
+              <mat-form-field
+                id="place"  
+                appearance="outline" 
+                floatLabel="always"
+                class="sidebar-form-field">
+                <mat-icon matPrefix>location_on</mat-icon>
+                <mat-select placeholder="พื้นที่ใกล้ฉัน">
+                  <mat-option *ngFor="let province of config.provinces" [value]="province">
+                    {{province}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-card-content>
+      
+            <mat-card-title>
+              <h3><b>ราคา</b></h3>
+            </mat-card-title>
+      
+            <mat-card-content>
+              <mat-form-field 
+                appearance="outline" 
+                floatLabel="always"
+                class="sidebar-form-field">
+                <mat-select placeholder="กรุณาเลือก">
+                  <mat-option *ngFor="let priceRange of config.priceRange" [value]="priceRange">
+                    {{priceRange}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-card-content>
+      
+            <mat-card-title>
+              <h3><b>ประเภทร้านอาหารและเครื่องดื่ม</b></h3>
+            </mat-card-title>
+      
+            <mat-card-content>
+              <mat-radio-group class="radio-group">
+                <mat-radio-button
+                  class="radio-button" 
+                  *ngFor="let subcategory of getSubCategories()"
+                  [value]="subcategory">
+                  {{subcategory}}
+                </mat-radio-button>
+              </mat-radio-group>
+            </mat-card-content>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+    <div class="col-9">
+      <mat-card id="contents" *ngIf="config">
+        <div class="row">
+          <div class="col-4">
+            <img 
+              src="https://images.unsplash.com/photo-1597227772909-a6d166b48b79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" 
+              class="img-fluid" 
+              alt="Photo of a Shiba Inu">
+          </div>
+
+          <div class="col-8">
+            <h1 style="margin-top: 8px;">
+              <b>Kanysorn Cafe&nbsp;&nbsp;&nbsp;&nbsp;</b>
+              <button type="button" class="btn btn-success btn-sm" >เปิดอยู่</button>
+            </h1>
+            
+            <h3 style="color: gray;">งานบริการอื่นๆ / เบ็ดเตล็ด | <a style="color: black;">฿</a>฿฿฿ | เขตธนบุรี กรุงเทพมหานคร</h3>
+            <hr />
+            <p style="color: gray;"><strong>ร้านทุกอย่าง</strong> โต๊ะ ตู้ เตียง</p>
+            <p style="color: gray;"><a style="color: black;"><b>เมนูแนะนำ</b></a> แจกัน จานชาม เก้าอี้สามขา</p>
+            <mat-icon class="icon">commute</mat-icon>
+          </div>
+        </div>
       </mat-card>
     </div>
   </div>
