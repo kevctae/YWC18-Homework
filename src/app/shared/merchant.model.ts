@@ -1,4 +1,4 @@
-export interface merchant {
+export interface Merchant {
   shopNameTH: string,
   categoryName: string,
   subcategoryName: string,
