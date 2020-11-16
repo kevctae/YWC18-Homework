@@ -1,35 +1,47 @@
 <mat-toolbar color="secondary">
   <mat-toolbar-row>
-    <img 
-      src="./assets/img/logo.png" 
-      height="40px"
-      class="logo">
-    
-    
-    <mat-form-field
-      id="place" 
-      appearance="outline" 
-      floatLabel="always" 
-      class="select-place">
-      <mat-icon matPrefix>location_on</mat-icon>
-      <mat-select placeholder="พื้นที่ใกล้ฉัน">
-      </mat-select>
-    </mat-form-field>    
+    <div class="container">
+      <div class="row">
+        <div class="col-2 logo">
+          <img
+            src="./assets/img/logo.png" 
+            height="40px">
+        </div>
 
-    <mat-form-field 
-      appearance="outline" 
-      floatLabel="always" 
-      class="search-bar">
-      <mat-label></mat-label>
-      <input matInput type="search" placeholder="ค้นหา ชื่อ ร้านอาหาร และเครื่องดื่ม ร้านธงฟ้า ร้านค้า OTOP และสินค้าทั่วไป">
-      <mat-icon matSuffix>search</mat-icon>
-    </mat-form-field>
+        <div class="col-10">
+          <mat-form-field
+            id="place" 
+            appearance="outline" 
+            floatLabel="always" 
+            class="select-place">
+            <mat-icon matPrefix>location_on</mat-icon>
+            <mat-select placeholder="พื้นที่ใกล้ฉัน">
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field 
+            appearance="outline" 
+            floatLabel="always" 
+            class="search-bar">
+            <mat-label></mat-label>
+            <input matInput type="search" placeholder="ค้นหา ชื่อ ร้านอาหาร และเครื่องดื่ม ร้านธงฟ้า ร้านค้า OTOP และสินค้าทั่วไป">
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>   
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>
 
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span><u>หน้าแรก</u> / <b>ค้นหา</b></span>
+    <div class="container">
+      <div class="row">
+        <div class="col-1">
+          <span><u>หน้าแรก</u> / <b>ค้นหา</b></span>
+        </div>
+      </div>
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>
 
