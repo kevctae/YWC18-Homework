@@ -28,6 +28,9 @@ export class HeaderComponent implements OnInit {
         case WindowSize.s:
           this.logoURL = './assets/img/logo-s.png';
           break;
+        case WindowSize.mobile:
+          this.logoURL = './assets/img/logo-s.png';
+          break;
       }
     });
   }
