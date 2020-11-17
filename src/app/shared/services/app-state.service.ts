@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 
-export enum WindowSize {s, m, l}
+export enum WindowSize {mobile, s, m, l}
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +24,10 @@ export class ApplicationStateService {
       this.windowSize.next(WindowSize.l);
     } else if (window.innerWidth > 1000) {
       this.windowSize.next(WindowSize.m);
-    } else {
+    } else if (window.innerWidth > 480){
       this.windowSize.next(WindowSize.s);
+    } else {
+      this.windowSize.next(WindowSize.mobile)
     }
   }
 }
