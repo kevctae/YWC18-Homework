@@ -4,6 +4,7 @@ import { take } from 'rxjs/operators';
 import { Config } from '../../shared/models/config.models';
 import { Category } from 'src/app/shared/models/category.model';
 import { Merchant } from 'src/app/shared/models/merchant.model';
+import { ApplicationStateService, WindowSize } from 'src/app/shared/services/app-state.service';
 
 @Component({
   selector: 'app-home',
@@ -18,12 +19,27 @@ export class HomeComponent implements OnInit {
   filteredProvince: string;
   filteredPrice: number;
   filteredSubcategory: string = 'ทั้งหมด';
-  
+  isMobile: boolean;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private appState: ApplicationStateService
+  ) { }
 
   ngOnInit(): void {
     this.getConfig();
+    this.initView();
+    this.onResize();
+  }
+
+  initView() {
+    this.appState.onResize$.subscribe((size: WindowSize) => {
+      if (WindowSize.mobile == size) {
+        this.isMobile = true;
+      } else {
+        this.isMobile = false;
+      }
+    });
   }
 
   getConfig() {
@@ -34,6 +50,10 @@ export class HomeComponent implements OnInit {
         this.config = data;
         this.merchants = data.merchants;
       }, (err) => console.log(err));
+  }
+
+  onResize() {
+    this.appState.onResize();
   }
 
   getSubcategories() {

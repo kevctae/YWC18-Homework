@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" (window:resize)="onResize()">
   <div class="row">
     <h2><b>ผลการค้นหา ร้านอาหารและเครื่องดื่ม</b></h2>
   </div>
@@ -90,50 +90,103 @@
     </div>
 
     <div class="col-9" *ngIf="config" id="content">
-      <mat-card
-        *ngFor="let merchant of getMerchant()" 
-        style="margin-bottom: 15px;"
-        id="contents">
-        <div class="row">
-          <div class="col-4">
-            <img 
-              [src]="merchant.coverImageId" 
-              class="img-fluid">
-          </div>
-
-          <div class="col-8">
-            <h1 style="margin-top: 8px;">
-              <b>{{merchant.shopNameTH}}&nbsp;&nbsp;&nbsp;&nbsp;</b>
-              <ng-container *ngIf="merchant.isOpen == 'Y'">
-                <button type="button" class="btn btn-success btn-sm" >เปิดอยู่</button>
-              </ng-container>
-              <ng-container *ngIf="merchant.isOpen == 'N'">
-                <button type="button" class="btn btn-secondary btn-sm" >ปิดอยู่</button>
-              </ng-container>
-            </h1>
-            
-            <h3 style="color: gray;">{{merchant.categoryName}} | 
-              <a style="color: black;">{{merchant.priceLevel | priceLevel:false}}</a>{{merchant.priceLevel | priceLevel:true}} | 
-              {{merchant.addressDistrictName}}
-              {{merchant.addressProvinceName}}
-            </h3>
-
-            <hr />
-            <p style="color: gray;" [innerHTML]="merchant.highlightText"></p>
-            <p style="color: gray;"><a style="color: black;"><b>สินค้าแนะนำ</b></a> {{merchant.recommendedItems | arraySpacer}}</p>
-            
-            <ng-container *ngIf="merchant.facilities.includes('ที่จอดรถ')">
-              <mat-icon style="margin-right: 30px;" class="icon">commute</mat-icon>
-            </ng-container>
-            <ng-container *ngIf="merchant.facilities.includes('สามารถนำสัตว์เลี้ยงเข้าได้')">
-              <mat-icon style="margin-right: 30px;" class="icon">pets</mat-icon>
-            </ng-container>
-            <ng-container *ngIf="merchant.facilities.includes('รับจองล่วงหน้า')">
-              <mat-icon style="margin-right: 30px;" class="icon">supervisor_account</mat-icon>
-            </ng-container>
-          </div>
-        </div>
-      </mat-card>
+      <ng-container *ngIf="!isMobile">
+        <ng-template [ngTemplateOutlet]="DesktopView"></ng-template>
+      </ng-container>
+      <ng-container *ngIf="isMobile">
+        <ng-template [ngTemplateOutlet]="MobileView"></ng-template>
+      </ng-container>
     </div>
   </div>
 </div>
+
+<ng-template #DesktopView>
+  <mat-card
+    *ngFor="let merchant of getMerchant()" 
+    style="margin-bottom: 15px;"
+    id="contents">
+    <div class="row">
+      <div class="col-4">
+        <img 
+          [src]="merchant.coverImageId" 
+          class="img-fluid">
+      </div>
+
+      <div class="col-8">
+        <h1 style="margin-top: 8px;">
+          <b>{{merchant.shopNameTH}}&nbsp;&nbsp;&nbsp;&nbsp;</b>
+          <ng-container *ngIf="merchant.isOpen == 'Y'">
+            <button type="button" class="btn btn-success btn-sm" >เปิดอยู่</button>
+          </ng-container>
+          <ng-container *ngIf="merchant.isOpen == 'N'">
+            <button type="button" class="btn btn-secondary btn-sm" >ปิดอยู่</button>
+          </ng-container>
+        </h1>
+        
+        <h3 style="color: gray;">{{merchant.categoryName}} | 
+          <a style="color: black;">{{merchant.priceLevel | priceLevel:false}}</a>{{merchant.priceLevel | priceLevel:true}} | 
+          {{merchant.addressDistrictName}}
+          {{merchant.addressProvinceName}}
+        </h3>
+
+        <hr />
+        <p style="color: gray;" [innerHTML]="merchant.highlightText"></p>
+        <p style="color: gray;"><a style="color: black;"><b>สินค้าแนะนำ</b></a> {{merchant.recommendedItems | arraySpacer}}</p>
+        
+        <ng-container *ngIf="merchant.facilities.includes('ที่จอดรถ')">
+          <mat-icon style="margin-right: 30px;" class="icon">commute</mat-icon>
+        </ng-container>
+        <ng-container *ngIf="merchant.facilities.includes('สามารถนำสัตว์เลี้ยงเข้าได้')">
+          <mat-icon style="margin-right: 30px;" class="icon">pets</mat-icon>
+        </ng-container>
+        <ng-container *ngIf="merchant.facilities.includes('รับจองล่วงหน้า')">
+          <mat-icon style="margin-right: 30px;" class="icon">supervisor_account</mat-icon>
+        </ng-container>
+      </div>
+    </div>
+  </mat-card>
+</ng-template>
+
+<ng-template #MobileView>
+  <mat-card
+    *ngFor="let merchant of getMerchant()" 
+    style="margin-bottom: 15px;"
+    id="contents">
+    <div class="row">
+      <div class="col">
+        <img 
+          [src]="merchant.coverImageId" 
+          class="img-fluid">
+          <h1 style="margin-top: 8px;">
+            <b>{{merchant.shopNameTH}}&nbsp;&nbsp;&nbsp;&nbsp;</b>
+            <ng-container *ngIf="merchant.isOpen == 'Y'">
+              <button type="button" class="btn btn-success btn-sm" >เปิดอยู่</button>
+            </ng-container>
+            <ng-container *ngIf="merchant.isOpen == 'N'">
+              <button type="button" class="btn btn-secondary btn-sm" >ปิดอยู่</button>
+            </ng-container>
+          </h1>
+          
+          <h3 style="color: gray;">{{merchant.categoryName}} | 
+            <a style="color: black;">{{merchant.priceLevel | priceLevel:false}}</a>{{merchant.priceLevel | priceLevel:true}} | 
+            {{merchant.addressDistrictName}}
+            {{merchant.addressProvinceName}}
+          </h3>
+
+          <hr />
+          <p style="color: gray;" [innerHTML]="merchant.highlightText"></p>
+          <p style="color: gray;"><a style="color: black;"><b>สินค้าแนะนำ</b></a> {{merchant.recommendedItems | arraySpacer}}</p>
+          
+          <ng-container *ngIf="merchant.facilities.includes('ที่จอดรถ')">
+            <mat-icon style="margin-right: 30px;" class="icon">commute</mat-icon>
+          </ng-container>
+          <ng-container *ngIf="merchant.facilities.includes('สามารถนำสัตว์เลี้ยงเข้าได้')">
+            <mat-icon style="margin-right: 30px;" class="icon">pets</mat-icon>
+          </ng-container>
+          <ng-container *ngIf="merchant.facilities.includes('รับจองล่วงหน้า')">
+            <mat-icon style="margin-right: 30px;" class="icon">supervisor_account</mat-icon>
+          </ng-container>
+      </div>
+    </div>
+  </mat-card>
+</ng-template>
