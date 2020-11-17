@@ -17,7 +17,8 @@ export class HomeComponent implements OnInit {
   filteredCategory: string = 'ทั้งหมด';
   filteredProvince: string;
   filteredPrice: number;
-  filteredSubcategory: string = 'ทั้งหมด'; 
+  filteredSubcategory: string = 'ทั้งหมด';
+  
 
   constructor(private http: HttpClient) { }
 

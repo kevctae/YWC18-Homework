@@ -4,7 +4,7 @@
   </div>
 
   <div class="row">
-    <div class="col-3">
+    <div class="col-3" id="sidebar">
       <mat-card *ngIf="config">
         <div class="row">
           <div class="col" style="margin: 16px;">
@@ -89,7 +89,7 @@
       </mat-card>
     </div>
 
-    <div class="col-9" *ngIf="config">
+    <div class="col-9" *ngIf="config" id="content">
       <mat-card
         *ngFor="let merchant of getMerchant()" 
         style="margin-bottom: 15px;"
