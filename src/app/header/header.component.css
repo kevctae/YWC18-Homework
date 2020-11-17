@@ -39,3 +39,26 @@ span {
   font-size: 17px;
 }
 
+#filter {
+  display: none;
+}
+@media only screen and (max-width: 1425px){
+  #filter {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 1000px){
+  #place {
+     display: none;
+  }
+  
+  mat-form-field.search-bar {
+    font-size: 75%;
+    width: 100%;
+  }
+
+  .logo {
+    padding: 0;
+  }
+}

@@ -1,32 +1,43 @@
-<mat-toolbar color="secondary">
+<mat-toolbar color="secondary" (window:resize)="onResize()">
   <mat-toolbar-row>
     <div class="container">
       <div class="row">
         <div class="col-2 logo">
           <img
-            src="./assets/img/logo.png" 
+            [src]="logoURL" 
             height="40px">
         </div>
 
         <div class="col-10">
-          <mat-form-field
-            id="place" 
-            appearance="outline" 
-            floatLabel="always" 
-            class="select-place">
-            <mat-icon matPrefix>location_on</mat-icon>
-            <mat-select placeholder="พื้นที่ใกล้ฉัน">
-            </mat-select>
-          </mat-form-field>
+          <div class="row">
+            <div class="col-10">
+              <mat-form-field
+                id="place" 
+                appearance="outline" 
+                floatLabel="always" 
+                class="select-place">
+                <mat-icon matPrefix>location_on</mat-icon>
+                <mat-select placeholder="พื้นที่ใกล้ฉัน">
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field
+                appearance="outline" 
+                floatLabel="always" 
+                class="search-bar">
+                <mat-label></mat-label>
+                <input matInput type="search" placeholder="ค้นหา ชื่อ ร้านอาหาร และเครื่องดื่ม ร้านธงฟ้า ร้านค้า OTOP และสินค้าทั่วไป">
+                <mat-icon matSuffix>search</mat-icon>
+              </mat-form-field>
+            </div>
 
-          <mat-form-field 
-            appearance="outline" 
-            floatLabel="always" 
-            class="search-bar">
-            <mat-label></mat-label>
-            <input matInput type="search" placeholder="ค้นหา ชื่อ ร้านอาหาร และเครื่องดื่ม ร้านธงฟ้า ร้านค้า OTOP และสินค้าทั่วไป">
-            <mat-icon matSuffix>search</mat-icon>
-          </mat-form-field>
+            <div class="col-2 logo">
+              <img
+                id="filter"
+                [src]="'./assets/img/filter.svg'" 
+                height="40px">
+            </div>
+          </div>
+          
         </div>
       </div>   
     </div>
